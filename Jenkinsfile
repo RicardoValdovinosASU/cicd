@@ -24,7 +24,7 @@ pipeline {
 
                     println 'building backend...'
                     dir('./backend/') {
-                        backend = docker.build("cicd-backend-jenkins", "./backend/")
+                        backend = docker.build("cicd-backend-jenkins", ".")
                     }
                 
 
