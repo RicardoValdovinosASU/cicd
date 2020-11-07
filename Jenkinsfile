@@ -8,7 +8,7 @@ pipeline {
 
             steps {
                 echo 'building...'
-                sh "docker-compose up"
+                sh "sudo docker-compose up"
             }
         }
 
