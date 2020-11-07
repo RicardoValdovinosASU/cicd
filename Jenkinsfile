@@ -22,9 +22,7 @@ pipeline {
                 script {
                     println 'building frontend'
                     frontend = docker.build("cicd-frontend-jenkins", "./frontend/")
-                    docker.image('cicd-frontend-jenkins:latest').runWith('-p 8082:3000 -d --name=cicd-frontend-jenkins cicd-frontend-jenkins') { c ->
-
-                    }
+                    docker.image('cicd-frontend-jenkins:latest').runWith('-p 8082:3000 -d --name=cicd-frontend-jenkins cicd-frontend-jenkins')
 
                     println 'building backend'
                     backend = docker.build("cicd-backend-jenkins", "./backend/")
