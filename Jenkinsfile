@@ -17,16 +17,18 @@ pipeline {
         }
         stage("build") {
             steps {
-                echo 'building...'
-
                 script {
-                    println 'building frontend'
+                    println 'building frontend...'
                     frontend = docker.build("cicd-frontend-jenkins", "./frontend/")
-                    docker.image('cicd-frontend-jenkins:latest').withRun('-p 8082:3000 -d --name=cicd-frontend-jenkins cicd-frontend-jenkins') { c ->
-                    }
+                    docker.image('cicd-frontend-jenkins:latest').withRun('-p 8082:3000 -d --name=cicd-frontend-jenkins cicd-frontend-jenkins') { c -> }
 
-                    println 'building backend'
-                    backend = docker.build("cicd-backend-jenkins", "./backend/")
+                    println 'building backend...'
+                    dir('./backend/') {
+                        backend = docker.build("cicd-backend-jenkins", "./backend/")
+                    }
+                
+
+
                 }
             }
         }
