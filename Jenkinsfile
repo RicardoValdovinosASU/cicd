@@ -20,11 +20,9 @@ pipeline {
                 echo 'building...'
 
                 script {
-                    frontend = docker.build("cicd-frontend-jenkins", "./frontend/")
                     sh('./frontend/docker-build-run.sh')
                     println 'building frontend'
 
-                    backend = docker.build("cicd-backend-jenkins", "./frontend/")
                     sh('./frontend/docker-build-run.sh')
                     println 'building backend'
                 }
