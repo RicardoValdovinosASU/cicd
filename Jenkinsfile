@@ -1,7 +1,7 @@
 pipeline {
 
     agent any
-    
+
     environment {
         frontend = ''
         backend = ''
@@ -26,9 +26,6 @@ pipeline {
                     dir('./backend/') {
                         backend = docker.build("cicd-backend-jenkins", ".")
                     }
-                
-
-
                 }
             }
         }
