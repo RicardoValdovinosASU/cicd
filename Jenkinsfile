@@ -35,6 +35,7 @@ pipeline {
                 script {
                     dir('./backend/') {
                         sh('./mvnw test')
+                        junit('**/target/surefire-reports/TEST-*.xml')
                     }
                 }
             }
