@@ -32,6 +32,11 @@ pipeline {
         stage("test") {
             steps {
                 echo 'testing...'
+                script {
+                    dir('./backend/') {
+                        sh('./mvnw test')
+                    }
+                }
             }
         }
         stage("deploy") {
